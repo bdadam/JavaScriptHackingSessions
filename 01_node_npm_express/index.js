@@ -2,6 +2,7 @@
 
 var express = require('express');
 var nunjucks = require('nunjucks');
+var bodyParser = require('body-parser');
 var app = express();
 
 var add = require('./add');
@@ -30,10 +31,15 @@ app.get('/hello/:name', function(req, res) {
     res.render('hello', { name: name });
 });
 
+app.post('/hello', bodyParser.urlencoded({ extended: true }), function(req, res) {
+    var name = req.body.name;
+    res.render('hello', { name: name });
+});
+
 app.get('/error', function(req, res) {
     /*eslint-disable */    
     throw new Error('An error occured');
-    res.send('This message never comes.')
+    res.send('This message never comes.');
     /*eslint-enable */
 });
 
@@ -62,13 +68,12 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 /*eslint-enable no-unused-vars*/
 
 var server = app.listen(3000, function() {
-    var host = server.address().address;
     var port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Example app listening at http://127.0.0.1:%s/', port);
 });

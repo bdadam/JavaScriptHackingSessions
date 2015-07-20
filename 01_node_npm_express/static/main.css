@@ -31,3 +31,7 @@ h1 {
 p {
     margin-bottom: 1rem;
 }
+
+hr {
+    margin: 1rem 0;
+}
