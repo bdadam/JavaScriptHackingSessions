@@ -44,8 +44,8 @@ app.get('/error', function(req, res) {
 });
 
 app.get('/add', function(req, res) {
-    var a = Number(req.query.a);
-    var b = Number(req.query.b);
+    var a = req.query.a;
+    var b = req.query.b;
 
     if (!isNaN(a) && !isNaN(b)) {
         res.send('The result is: ' + add(a, b));

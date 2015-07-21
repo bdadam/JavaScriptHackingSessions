@@ -11,12 +11,11 @@ describe('Testing "add" module', function() {
     });
 
     describe('Strings', function() {
-        it('should NOT convert strings to numbers', function() {
-            expect(add('5', '3')).to.equal('53');
+        it('should convert strings to numbers', function() {
+            expect(add('5', '3')).to.equal(8);
         });
     });
 
-    /*
     describe('Many numbers', function() {
         it('5 + 3 + 12 should equal 20', function() {
             expect(add(5, 3, 12)).to.equal(20);
@@ -26,6 +25,5 @@ describe('Testing "add" module', function() {
             expect(add(5, 3, 12, 20)).to.equal(40);
         });
     });
-    */
 
 });
